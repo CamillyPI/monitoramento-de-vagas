@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "author": "Camilly",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -28.8,
+      "left": -52.76,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -61.2,
+      "left": 119.4,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -61.2,
+      "left": 157.8,
+      "attrs": { "color": "limegreen", "flip": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 121.4,
+      "left": -163.2,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 32.75,
+      "left": 67.2,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 61.55,
+      "left": 67.2,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:1.r", "esp:13", "green", [ "v0" ] ],
+    [ "btn1:2.r", "esp:GND.1", "green", [ "h0" ] ],
+    [ "led2:A", "esp:2", "green", [ "v0" ] ],
+    [ "led1:A", "esp:4", "green", [ "v0" ] ],
+    [ "led2:C", "r2:2", "green", [ "v0" ] ],
+    [ "r2:1", "esp:GND.2", "green", [ "v0" ] ],
+    [ "led1:C", "r1:2", "green", [ "v0" ] ],
+    [ "r1:1", "esp:GND.2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
